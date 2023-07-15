@@ -2,7 +2,7 @@ FROM alpine as builder
 
 RUN apk update && apk add git openjdk8 maven
 
-RUN wget https://github.com/skmdab/spring-boot-mongo-docker.git
+RUN git clone https://github.com/skmdab/spring-boot-mongo-docker.git
 
 WORKDIR /spring-boot-mongo-docker
 
