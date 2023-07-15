@@ -18,7 +18,7 @@ pipeline{
 
         stage('Push docker image to dockerhub'){
             steps{
-                withCredentials([usernameColonPassword(credentialsId: 'DOCKER_CREDS', variable: 'DOCKER_PASSWORD')]) {
+                withCredentials([string(credentialsId: 'DOCKER_CREDS', variable: 'DOCKER_PASSWORD')]) {
                    sh "docker login -u skmdab -p ${DOCKER_PASSWORD}"
                    sh "docker push skmdab/springboot"
                 }
