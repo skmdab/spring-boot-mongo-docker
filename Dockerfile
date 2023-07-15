@@ -10,10 +10,10 @@ RUN mvn clean package
 
 FROM openjdk:8-alpine
 
-COPY --from=builder /spring-boot-mongo-docker/target/spring-boot-mongo*.jar /opt/
+COPY --from=builder /spring-boot-mongo-docker/target/spring-boot-mongo*.jar /opt/spring-boot-mongo.jar
 
 WORKDIR /opt
 
 EXPOSE 8080
 
-CMD ["java","-jar","/spring-boot-mongo*.jar"]
+CMD ["java","-jar","spring-boot-mongo.jar"]
