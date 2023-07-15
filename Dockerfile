@@ -8,6 +8,8 @@ WORKDIR /spring-boot-mongo-docker
 
 RUN mvn clean package
 
-FROM tomcat:8-jdk8-corretto
+FROM openjdk:8-alpine
 
-COPY --from=builder /spring-boot-mongo-docker/target/spring-boot-mongo*.jar /usr/local/tomcat/webapps/
+COPY --from=builder /spring-boot-mongo-docker/target/spring-boot-mongo*.jar /opt/
+
+CMD ["java" "-jar" "/opt/spring-boot-mongo*.jar"]
