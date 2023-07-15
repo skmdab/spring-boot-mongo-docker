@@ -4,7 +4,7 @@ metadata:
   name: springappconfigmap
 data:
   username: springapp
-  password: mongodb@123
+  password: redhat
 
 ---
 apiVersion: v1
@@ -13,7 +13,7 @@ metadata:
   name: springappsecrets
 type: Opaque
 stringData:   # We can define multiple key value pairs.
-  password: devdb@123
+  password: redhat
 
 ---
 apiVersion: v1
@@ -60,7 +60,7 @@ spec:
     spec:
       containers:
       - name: springappcontainer
-        image: dockerhandson/spring-boot-mongo
+        image: skmdab/springboot
         ports:
         - containerPort: 8080
         env:
