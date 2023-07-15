@@ -12,4 +12,8 @@ FROM openjdk:8-alpine
 
 COPY --from=builder /spring-boot-mongo-docker/target/spring-boot-mongo*.jar /opt/
 
-CMD ["java" "-jar" "/opt/spring-boot-mongo*.jar"]
+WORKDIR /opt
+
+EXPOSE 8080
+
+CMD ["java","-jar","/spring-boot-mongo*.jar"]
