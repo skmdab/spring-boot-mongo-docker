@@ -6,7 +6,7 @@ pipeline{
     stages{
         stage('Checkout the code'){
             steps{
-                git branch: 'filinta', url: 'https://github.com/skmdab/spring-boot-mongo-docker.git'
+                git branch: 'filintav1', url: 'https://github.com/skmdab/spring-boot-mongo-docker.git'
             }
         }
 
