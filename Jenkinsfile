@@ -25,9 +25,19 @@ pipeline{
             }
         }   
 
-        stage('Deploying springboot app into k8s cluster'){
+        stage('Push springboot.yaml file into k8s cluster'){
             steps{
-                sh "kubectl apply -f springBootMongo.yml"
+                sshagent(['ubuntu_creds']) {
+                    sh "scp -o StrictHostKeyChecking=no springBootMongo.yml ubuntu@13.127.219.130:/home/ubuntu/"
+                }
+            }
+        }
+
+        stage('Deploying Springboot app to K8s cluster'){
+            steps{
+                withCredentials([file(credentialsId: 'pemfile', variable: 'PEMFILE')]) {
+                   sh "ssh -i ${PEMFILE} ubuntu@13.127.219.130 kubectl apply -f springBootMongo.yml"
+                }
             }
         }
     }
